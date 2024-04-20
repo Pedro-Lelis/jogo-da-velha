@@ -8,9 +8,15 @@ public class Program {
 	
 
 		Tabuleiro tab = new Tabuleiro();
-		Menu.imprimeTabuleiro(tab);
+		Menu menu = new Menu();
 		
-		tab.setPosicao(1, 1);
-		Menu.imprimeTabuleiro(tab);
+		while(true) {
+				Menu.imprimeTabuleiro(tab);
+			
+				tab.setPosicao(menu.lerLinha(), menu.lerColuna());
+		
+			
+		}
+
 	}
 }

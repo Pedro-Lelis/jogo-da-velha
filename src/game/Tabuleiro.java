@@ -9,7 +9,6 @@ public class Tabuleiro {
 		for (Integer i = 0; i < 3 ; i++) {
 			for (Integer j = 0; j < 3; j++) {
 				posicao[i][j] = "-";
-				System.out.println("Adição: " + i + " " + j);
 			}
 		}
 	}
@@ -20,7 +19,6 @@ public class Tabuleiro {
 
 	public void setPosicao(Integer linha, Integer coluna) {
 		this.posicao[linha][coluna] = "x";
-		System.out.println(posicao[linha][coluna]);
 
 	}
 
