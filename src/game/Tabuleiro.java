@@ -21,8 +21,8 @@ public class Tabuleiro {
 	}
 
 	public void setPosicao(Integer linha, Integer coluna) {
-		
-		if(this.posicao[linha][coluna] == "-") {
+
+		if (this.posicao[linha][coluna] == "-") {
 			this.posicao[linha][coluna] = jogadorAtual.toString();
 			if (this.jogadorAtual == Jogador.x) {
 				this.jogadorAtual = Jogador.o;
@@ -57,41 +57,35 @@ public class Tabuleiro {
 		return true;
 	}
 
+	public boolean marcouLinha(Jogador jogador, Integer i) {
+
+		return posicao[i][0] == jogador.toString() && posicao[i][1] == jogador.toString()
+				&& posicao[i][2] == jogador.toString();
+	}
+
+	public boolean marcouColuna(Jogador jogador, Integer i) {
+		return posicao[0][i] == jogador.toString() && posicao[1][i] == jogador.toString()
+				&& posicao[2][i] == jogador.toString();
+	}
+
+	public boolean marcouDiagonal(Jogador jogador) {
+
+		return (posicao[0][0] == jogador.toString() && posicao[1][1] == jogador.toString()
+				&& posicao[2][2] == jogador.toString())
+				|| (posicao[0][2] == jogador.toString() && posicao[1][1] == jogador.toString()
+						&& posicao[2][0] == jogador.toString());
+	}
+
 	public boolean venceu() {
 		for (Integer i = 0; i < 3; i++) {
-			// linhas x
-			if (posicao[i][0] == "x" && posicao[i][1] == "x" && posicao[i][2] == "x") {
-				return true;
-			}
 
-			// linhas o
-			if (posicao[i][0] == "o" && posicao[i][1] == "o" && posicao[i][2] == "o") {
+			boolean marcou = marcouLinha(Jogador.x, i) || marcouLinha(Jogador.o, i) || marcouColuna(Jogador.x, i)
+					|| marcouColuna(Jogador.o, i);
+			if (marcou)
 				return true;
-			}
-
-			if (posicao[0][i] == "x" && posicao[1][i] == "x" && posicao[2][i] == "x") {
-				return true;
-			}
-
-			// coluna o
-			if (posicao[0][i] == "o" && posicao[1][i] == "o" && posicao[2][i] == "o") {
-				return true;
-			}
 		}
 
-		// diagonais x
-		if ((posicao[0][0] == "x" && posicao[1][1] == "x" && posicao[2][2] == "x")
-				|| (posicao[0][2] == "x" && posicao[1][1] == "x" && posicao[2][0] == "x")) {
-			return true;
-		}
-
-		// diagonais o
-		if ((posicao[0][0] == "o" && posicao[1][1] == "o" && posicao[2][2] == "o")
-				|| (posicao[0][2] == "o" && posicao[1][1] == "o" && posicao[2][0] == "o")) {
-			return true;
-		}
-
-		return false;
+		return marcouDiagonal(Jogador.x) || marcouDiagonal(Jogador.o);
 	}
 
 }
