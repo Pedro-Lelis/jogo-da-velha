@@ -10,6 +10,7 @@ public class Menu {
 	}
 
 	public Integer lerLinha() {
+		System.out.println();
 		Integer linha = 0;
 		while (linha <= 0 || linha >3) {
 			try {
@@ -40,18 +41,8 @@ public class Menu {
 				scan.next();
 			}
 		}
+		System.out.println();
 		return (coluna - 1);
-	}
-
-	public static void imprimeTabuleiro() {
-		for (Integer i = 0; i < 3; i++) {
-			System.out.print((3 - i) + " ");
-			for (Integer j = 0; j < 3; j++) {
-				System.out.print("- ");
-			}
-			System.out.println();
-		}
-		System.out.println("  1 2 3");
 	}
 
 	public static void imprimeTabuleiro(Tabuleiro tab) {

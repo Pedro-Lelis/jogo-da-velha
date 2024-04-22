@@ -11,13 +11,20 @@ public class Program {
 		Menu menu = new Menu();
 		
 		while(!tab.velha() && !tab.venceu()) {
-				Menu.imprimeTabuleiro(tab);
 			
+				Menu.imprimeTabuleiro(tab);			
 				tab.setPosicao(menu.lerLinha(), menu.lerColuna());
 			
 		}
 		
 		Menu.imprimeTabuleiro(tab);
+		if (tab.velha()) {
+			System.out.println("Deu velha!");
+		}
+		
+		if (tab.venceu()) {
+			System.out.println("Jogador '" + tab.vencedor() + "' venceu!");
+		}
 
 	}
 }
