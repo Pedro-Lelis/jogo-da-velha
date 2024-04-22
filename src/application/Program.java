@@ -10,11 +10,10 @@ public class Program {
 		Tabuleiro tab = new Tabuleiro();
 		Menu menu = new Menu();
 		
-		while(!tab.velha()) {
+		while(!tab.velha() && !tab.venceu()) {
 				Menu.imprimeTabuleiro(tab);
 			
 				tab.setPosicao(menu.lerLinha(), menu.lerColuna());
-				System.out.println(tab.velha());
 			
 		}
 		
