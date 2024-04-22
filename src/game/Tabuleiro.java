@@ -1,8 +1,10 @@
 package game;
 
+import player.Jogador;
 
 public class Tabuleiro {
 	private String[][] posicao;
+	private Jogador jogadorAtual;
 
 	public Tabuleiro() {
 		posicao = new String[3][3];
@@ -11,6 +13,7 @@ public class Tabuleiro {
 				posicao[i][j] = "-";
 			}
 		}
+		jogadorAtual = Jogador.x;
 	}
 
 	public String getPosicao(Integer linha, Integer coluna) {
@@ -18,8 +21,24 @@ public class Tabuleiro {
 	}
 
 	public void setPosicao(Integer linha, Integer coluna) {
-		this.posicao[linha][coluna] = "x";
-
+		this.posicao[linha][coluna] = jogadorAtual.toString();
+		if(this.jogadorAtual==Jogador.x) {
+			this.jogadorAtual=Jogador.o;
+		} else {
+			this.jogadorAtual=Jogador.x;
+		}
+		
+	}
+	
+	public Jogador getJogadorAtual() {
+		return this.jogadorAtual;
+	}
+	
+	public Jogador oponente(Jogador jogador) {
+		if(jogador==Jogador.x) {
+			return Jogador.o;
+		}
+		return Jogador.x;
 	}
 
 }
